@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/EmployWise-User-Management/static/css/main.1deedeb0.css",
+    "main.js": "/EmployWise-User-Management/static/js/main.858c8f78.js",
+    "index.html": "/EmployWise-User-Management/index.html",
+    "main.1deedeb0.css.map": "/EmployWise-User-Management/static/css/main.1deedeb0.css.map",
+    "main.858c8f78.js.map": "/EmployWise-User-Management/static/js/main.858c8f78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1deedeb0.css",
+    "static/js/main.858c8f78.js"
+  ]
+}
