@@ -15,7 +15,7 @@ const Login = () => {
         try {
           const response = await loginUser(email, password);
           if (response.token) {
-            localStorage.setItem("token", response.token); // Store token
+            localStorage.setItem("token", response.token);
             toast.success("Login Successful!");
             setTimeout(() => navigate("/dashboard"), 2000);
           } else {
