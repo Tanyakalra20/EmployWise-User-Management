@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import EditUserModal from "./EditUserModal"; // Ensure correct import
-import { toast } from "react-toastify"; // Import toast notifications
-import "react-toastify/dist/ReactToastify.css"; // Import toast CSS
+import EditUserModal from "./EditUserModal"; 
+import { toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 import { useNavigate } from "react-router-dom";
 
 const BASE_URL = "https://reqres.in/api";
@@ -16,7 +16,7 @@ const UserList = () => {
   const navigate = useNavigate();
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [noResults, setNoResults] = useState(false); // Track if no results are found
+  const [noResults, setNoResults] = useState(false); 
 
   useEffect(() => {
     fetchUsers(currentPage);
@@ -45,7 +45,7 @@ const UserList = () => {
     );
 
     setFilteredUsers(filtered);
-    setNoResults(filtered.length === 0); // If no results, show the "No user found" message
+    setNoResults(filtered.length === 0);
   };
 
   const handleEdit = (user) => {
@@ -54,21 +54,21 @@ const UserList = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token from localStorage
-    navigate("/"); // Redirect to login page
+    localStorage.removeItem("token"); 
+    navigate("/"); 
   };
 
   const handleDelete = async (id) => {
     try {
-      // Perform delete via API
+      
       await axios.delete(`${BASE_URL}/users/${id}`);
 
-      // Update state to remove the user
+
       const updatedUsers = users.filter((user) => user.id !== id);
       setUsers(updatedUsers);
       setFilteredUsers(updatedUsers);
 
-      // Success toast
+   
       toast.success("User deleted successfully!");
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -78,19 +78,17 @@ const UserList = () => {
 
   const handleSave = async (id, updatedData) => {
     try {
-      // First, update the user via the API
+      
       await axios.put(`${BASE_URL}/users/${id}`, updatedData);
 
-      // Now update the local state
       const updatedUsers = users.map((user) =>
         user.id === id ? { ...user, ...updatedData } : user
       );
 
-      // Update state
       setUsers(updatedUsers);
       setFilteredUsers(updatedUsers);
 
-      // Success toast
+  
       toast.success("User updated successfully!");
     } catch (error) {
       console.error("Error updating user:", error);
@@ -102,7 +100,6 @@ const UserList = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold text-center my-4">Users List</h2>
       
-      {/* Search Input */}
       <div className="mb-4 flex justify-center">
         <input
           type="text"
@@ -113,7 +110,7 @@ const UserList = () => {
         />
       </div>
 
-      {/* No Results Message */}
+      
       {noResults && (
         <p className="text-center text-red-500 font-semibold">No user found</p>
       )}
