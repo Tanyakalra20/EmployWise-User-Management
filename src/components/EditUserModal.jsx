@@ -19,9 +19,9 @@ const EditUserModal = ({ user, onClose, onSave }) => {
     try {
       const response = await axios.put(`https://reqres.in/api/users/${user.id}`, formData);
       if (response.status === 200) {
-        onSave(user.id, formData); // Update the parent state
+        onSave(user.id, formData); 
         toast.success("User updated successfully!");
-        onClose(); // Close modal
+        onClose();
       }
     } catch (error) {
       console.error("Error updating user:", error);
